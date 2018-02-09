@@ -29,3 +29,6 @@ end
 gem "bootstrap-sass", "~> 3.1.1"
 gem "faker"
 gem "friendly_id"
+
+gem 'devise'
+gem 'bcrypt'

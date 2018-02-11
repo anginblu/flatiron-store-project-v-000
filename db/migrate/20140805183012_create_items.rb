@@ -4,9 +4,10 @@ class CreateItems < ActiveRecord::Migration
       t.string :title
       t.integer :inventory
       t.integer :price
-      t.integer :category_id
+      t.references :category, index: true
 
       t.timestamps null: false
     end
-  end
+    add_foreign_key :items, :categories
+end
 end

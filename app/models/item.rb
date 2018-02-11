@@ -7,4 +7,11 @@ class Item < ActiveRecord::Base
     Item.all.each {|i| array << i if i.inventory > 0}
     array
   end
+
+  def remove(amount)
+    new_inventory = self.inventory - amount
+    self.update(inventory: new_inventory)
+  end
+
+
 end

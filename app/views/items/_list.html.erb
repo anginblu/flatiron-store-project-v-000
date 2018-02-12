@@ -1,0 +1,10 @@
+<% if !@items.empty? %>
+  <h4><%= link_to "Items", items_path %></h4>
+  <% @items.each do |item| %>
+    <% if item.inventory > 0 %>
+      <p><%= link_to item.title, item %> | $<%= item.price.to_f/100 %> | inventory: <%= item.inventory %>
+        <% if user_signed_in? %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %> <% end %>
+      </p>
+    <% end %>
+  <% end %>
+<% end %>

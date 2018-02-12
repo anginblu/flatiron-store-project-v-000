@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
 
   def create_current_cart
     new_cart = carts.create
-    current_cart_id = new_cart.id
-    save
+    self.update(current_cart_id: new_cart.id)
+    
   end
 
   def remove_cart

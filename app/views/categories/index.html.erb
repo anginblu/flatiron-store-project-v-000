@@ -1,3 +1,16 @@
-<% @categories.each do |category| %>
-  <%= @category.title %>
-<% end %>
+<h4>Categories</h4>
+<ul>
+  <%if !@categories.empty? %>
+    <% @categories.each do |category| %>
+      <li><%= link_to category.title, category %>
+        <ul>
+        <% category.items.each do |item| %>
+          <li><%= link_to item.title, item %> | $<%= item.price.to_f/100 %>
+            <% if user_signed_in? %> | <%= button_to 'Add to Cart', line_items_path(item_id: item) %><br> <% end %>
+          </li>
+        <% end %>
+      </ul>
+      </li>
+    <% end %>
+  <% end %>
+</ul>
